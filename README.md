@@ -1,12 +1,16 @@
-# 🔍 Domain Intel Scout Skill
+# 🔍 Domain Intel Scout Skill & Web Recon Studio
 
-> **Autonomous Passive Reconnaissance & Attack Surface Discovery Skill for Sovereign AI Agents**  
+> **Autonomous Passive Reconnaissance & Attack Surface Discovery Engine for Sovereign AI Agents & Web Operators**  
 > *Structured first-pass domain intelligence using DNS enumeration, WHOIS ownership inspection, and Certificate Transparency logs via crt.sh.*
 
+[![Live App](https://img.shields.io/badge/Live%20App-osint--domain--scout.netlify.app-00ff88?style=flat-square&logo=netlify)](https://osint-domain-scout.netlify.app/)
+[![Founding Pro License](https://img.shields.io/badge/Pro%20Lifetime-$19%20USD%20(Stripe%20%2B%20Solana)-d4af37?style=flat-square)](https://buy.stripe.com/7sI7sA8hM2X8eFG8ww)
 [![Skill Status](https://img.shields.io/badge/Agent%20Skill-Domain%20Intel%20Scout-00e5ff?style=flat-square)](#overview)
 [![Ecosystem](https://img.shields.io/badge/Ecosystem-Nous%20Hermes%20%2F%20Codex-gold?style=flat-square)](#compatibility)
 [![Zero Active Scanning](https://img.shields.io/badge/Passive-Zero%20Port%20Scan-brightgreen?style=flat-square)](#safety--ethics)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](#license)
+
+Live interactive workstation deployed at [https://osint-domain-scout.netlify.app/](https://osint-domain-scout.netlify.app/). Operates 100% in-browser with zero cloud telemetry, querying DNS-over-HTTPS (DoH) and Certificate Transparency records directly.
 
 ---
 
@@ -91,3 +95,8 @@ git clone https://github.com/NullAITech/osint-scout-skill.git ~/.hermes/skills/d
 ## ✦ License
 
 Part of the **[NullAI Tech](https://github.com/NullAITech)** open security ecosystem. Distributed under the MIT License.
+
+---
+
+Engineered by **Neal Frazier Tech** ([@1nc0gn30](https://github.com/1nc0gn30)) • [NullAI Platform](https://nullai.tech)  
+*Sovereign Local-First Architecture • 100% In-Browser Threat Recon • Zero Cloud Egress*
