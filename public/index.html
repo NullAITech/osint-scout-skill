@@ -13,7 +13,7 @@
   <meta property="og:description" content="Autonomous passive domain intelligence and attack surface scanner running 100% client-side with zero data egress.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://osint-domain-scout.netlify.app/">
-  <meta property="og:image" content="https://osint-domain-scout.netlify.app/favicon.ico">
+  <meta property="og:image" content="https://osint-domain-scout.netlify.app/assets/banner.png">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
@@ -21,9 +21,10 @@
   <meta name="twitter:creator" content="@1nc0gn30">
   <meta name="twitter:title" content="Domain Intel OSINT Scout | Passive Attack Surface Recon">
   <meta name="twitter:description" content="Autonomous passive domain reconnaissance and DNS intelligence engine.">
-  <meta name="twitter:image" content="https://osint-domain-scout.netlify.app/favicon.ico">
+  <meta name="twitter:image" content="https://osint-domain-scout.netlify.app/assets/banner.png">
 
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/icon.png">
   <script src="https://integrate.depay.com/widgets/v13.js" defer></script>
 
   <!-- Schema.org JSON-LD Graph -->
@@ -565,18 +566,18 @@
 
   <!-- Header -->
   <header>
-    <div class="brand">
-      <span class="brand-icon" role="img" aria-label="Radar Antenna">📡</span>
+    <div class="brand" style="display:flex; align-items:center; gap:12px;">
+      <img src="/assets/icon.png" alt="Domain Intel OSINT Scout Icon" width="38" height="38" style="border-radius: 9px; box-shadow: 0 0 12px rgba(212, 175, 55, 0.35);">
       <div>
         <h1>Domain Intel OSINT Scout</h1>
         <div style="display:flex; align-items:center; gap:6px; margin-top:2px;">
-          <span class="version-tag">v2.1.0 Sovereign</span>
+          <span class="version-tag">v2.5 SOVEREIGN</span>
           <span style="font-size:0.72rem; color:var(--text-muted);">Passive DNS & Threat Surface Recon</span>
         </div>
       </div>
     </div>
     <div class="header-pills">
-      <span class="status-pill" id="pro-badge">FREE TIER</span>
+      <span class="status-pill" id="licenseBadge" data-alias="pro-badge">⚡ FREE TIER</span>
       <button class="btn-unlock-link" onclick="openLicenseModal()" aria-label="Manage Pro License">🔑 Unlock Pro</button>
     </div>
   </header>
@@ -732,7 +733,7 @@
   </main>
 
   <!-- Pro Paywall & License Key Activation Modal -->
-  <div class="modal-overlay" id="license-modal">
+  <div class="modal-overlay" id="licenseModal" data-alias="license-modal">
     <div class="modal-card" style="max-width: 540px; position: relative;">
       <button type="button" onclick="closeLicenseModal()" style="position: absolute; top: 16px; right: 16px; background: transparent; border: none; font-size: 22px; color: var(--text-muted); cursor: pointer;">&times;</button>
       <div style="display:inline-block; background:var(--gold); color:#000; font-weight:800; font-size:11px; padding:3px 8px; border-radius:4px; letter-spacing:0.5px; width:fit-content;">PRO FOUNDING ACCESS</div>
@@ -768,8 +769,8 @@
       <div style="border-top:1px solid var(--border-subtle); padding-top:12px;">
         <label for="license-input" style="display:block; font-size:0.75rem; color:var(--text-muted); margin-bottom:6px;">Already purchased? Enter your receipt email or license key:</label>
         <div style="display:flex; gap:8px;">
-          <input type="text" id="license-input" class="modal-input" placeholder="e.g. zoth-osint-pro or your@email.com">
-          <button onclick="activateLicense()" class="btn-scan" style="padding:8px 16px;">Activate</button>
+          <input type="text" id="license-input" class="modal-input" placeholder="OSINT-PRO-2026 or receipt email">
+          <button id="btnActivateKey" onclick="activateLicense()" class="btn-scan" style="padding:8px 16px;">Activate</button>
         </div>
       </div>
     </div>
@@ -874,7 +875,9 @@
     // =========================================================================
 
     function isProLicensed() {
-      return localStorage.getItem('zoth_osint_licensed') === 'true';
+      return localStorage.getItem('zoth_osint_licensed') === 'true' ||
+             localStorage.getItem('osint_pro_licensed') === 'true' ||
+             localStorage.getItem('pro_licensed') === 'true';
     }
 
     function exportExecutiveReport() {
@@ -934,24 +937,32 @@
 
     function checkLicense() {
       const urlParams = new URLSearchParams(window.location.search);
-      const isParamLicensed = urlParams.get('licensed') === 'true' || urlParams.get('pro') === 'true';
+      const isParamLicensed = urlParams.get('licensed') === 'true' || urlParams.get('pro') === 'true' || urlParams.get('session_id');
       const isSavedLicensed = isProLicensed();
 
       if (isParamLicensed || isSavedLicensed) {
         unlockPro();
+        if (isParamLicensed && window.history && window.history.replaceState) {
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
       }
     }
 
     function unlockPro() {
       localStorage.setItem('zoth_osint_licensed', 'true');
-      const badge = document.getElementById('pro-badge');
-      if (badge) {
-        badge.innerText = '⭐ PRO ACTIVE';
-        badge.style.color = '#08080b';
-        badge.style.borderColor = '#00ff88';
-        badge.style.background = '#00ff88';
-        badge.style.boxShadow = '0 0 10px rgba(0, 255, 136, 0.4)';
-      }
+      localStorage.setItem('osint_pro_licensed', 'true');
+      localStorage.setItem('pro_licensed', 'true');
+
+      const badges = [document.getElementById('licenseBadge'), document.getElementById('pro-badge')];
+      badges.forEach(badge => {
+        if (badge) {
+          badge.innerText = '⭐ PRO ACTIVE';
+          badge.style.color = '#10B981';
+          badge.style.borderColor = '#10B981';
+          badge.style.background = 'rgba(16, 185, 129, 0.16)';
+          badge.style.boxShadow = '0 0 10px rgba(16, 185, 129, 0.3)';
+        }
+      });
 
       const banner = document.getElementById('salesBanner');
       if (banner) banner.style.display = 'none';
@@ -974,25 +985,29 @@
         const featEl = document.getElementById('paywall-feature-label');
         if (featEl) featEl.textContent = feature;
       }
-      const m = document.getElementById('license-modal');
+      const m = document.getElementById('licenseModal') || document.getElementById('license-modal');
       if (m) m.style.display = 'flex';
     }
 
     function closeLicenseModal() {
-      const m = document.getElementById('license-modal');
+      const m = document.getElementById('licenseModal') || document.getElementById('license-modal');
       if (m) m.style.display = 'none';
     }
 
-    function activateLicense() {
-      const val = document.getElementById('license-input').value.trim();
+    function activateLicense(providedKey) {
+      const inputEl = document.getElementById('license-input') || document.getElementById('licenseKeyInput');
+      const val = (providedKey || (inputEl ? inputEl.value : '')).trim();
       if (val.length >= 3) {
+        localStorage.setItem('osint_pro_key', val);
         unlockPro();
         closeLicenseModal();
-        alert('🎉 Pro License Activated! Lifetime access unlocked.');
+        return true;
       } else {
         alert('Please enter a valid license key or receipt email.');
+        return false;
       }
     }
+    window.activateLicenseKey = activateLicense;
 
     function openDePayCheckout(e) {
       if (e) e.preventDefault();
