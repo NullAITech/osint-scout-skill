@@ -453,7 +453,34 @@
     .paywall-blur {
       filter: blur(6px);
       user-select: none;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #14141f;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 8px;
+      padding: 12px 20px;
+      color: #fff;
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      transform: translateY(100px);
+      opacity: 0;
       pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 10000;
+    }
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .paywall-overlay {
@@ -560,7 +587,7 @@
       <a href="https://depay.com/pay/428790dd-7ad1-407c-8ecf-c048c77a4cb8" onclick="openDePayCheckout(event)" target="_blank" rel="noopener noreferrer" class="btn-buy-solana" aria-label="Pay with Solana">
         <span>⚡ Solana DePay ($19)</span>
       </a>
-      <button class="btn-unlock-link" onclick="openLicenseModal()" aria-label="Enter License Key">Enter Key</button>
+      <button id="btn-banner-key" class="btn-unlock-link" onclick="openLicenseModal()" aria-label="Enter License Key">Enter Key</button>
     </div>
   </aside>
 
@@ -726,14 +753,14 @@
             ⚡ Solana DePay ($19)
           </a>
         </div>
-        <button class="btn-unlock-link" style="margin-top:6px;" onclick="openLicenseModal()">I already have a license key</button>
+        <button id="btn-paywall-key" class="btn-unlock-link" style="margin-top:6px;" onclick="openLicenseModal()">I already have a license key</button>
       </div>
     </div>
 
   </main>
 
   <!-- Pro Paywall & License Key Activation Modal -->
-  <div class="modal-overlay" id="licenseModal" data-alias="license-modal">
+  <div class="modal-overlay" id="licenseModal" data-alias="paywall-modal">
     <div class="modal-card" style="max-width: 540px; position: relative;">
       <button type="button" onclick="closeLicenseModal()" style="position: absolute; top: 16px; right: 16px; background: transparent; border: none; font-size: 22px; color: var(--text-muted); cursor: pointer;">&times;</button>
       <div style="display:inline-block; background:var(--gold); color:#000; font-weight:800; font-size:11px; padding:3px 8px; border-radius:4px; letter-spacing:0.5px; width:fit-content;">PRO FOUNDING ACCESS</div>
@@ -774,6 +801,11 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">
+    <span id="toast-message"></span>
   </div>
 
   <!-- Footer -->
@@ -994,6 +1026,21 @@
       if (m) m.style.display = 'none';
     }
 
+    function showToast(msg) {
+      let toast = document.getElementById('toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'toast';
+        toast.className = 'toast';
+        toast.innerHTML = '<span id="toast-message"></span>';
+        document.body.appendChild(toast);
+      }
+      const msgEl = document.getElementById('toast-message') || toast;
+      msgEl.innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
     function activateLicense(providedKey) {
       const inputEl = document.getElementById('license-input') || document.getElementById('licenseKeyInput');
       const val = (providedKey || (inputEl ? inputEl.value : '')).trim();
@@ -1001,9 +1048,10 @@
         localStorage.setItem('osint_pro_key', val);
         unlockPro();
         closeLicenseModal();
+        showToast('🎉 Pro License Activated! Lifetime access unlocked.');
         return true;
       } else {
-        alert('Please enter a valid license key or receipt email.');
+        showToast('⚠️ Please enter a valid license key or receipt email.');
         return false;
       }
     }
@@ -1022,7 +1070,7 @@
           succeeded: () => {
             unlockPro();
             closeLicenseModal();
-            alert('🎉 Solana Payment Verified! Pro Lifetime Unlocked.');
+            showToast('🎉 Solana Payment Verified! Pro Lifetime Unlocked.');
           }
         });
       } else {

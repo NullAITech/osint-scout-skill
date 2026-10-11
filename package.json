@@ -2,13 +2,25 @@
   "name": "osint-scout-skill",
   "version": "2.5.0",
   "description": "Autonomous passive domain intelligence & attack surface reconnaissance engine auditing Certificate Transparency logs, DoH DNS records, and SPF/DMARC posture",
-  "scripts": {
-    "start": "python3 -m http.server 8080 --directory public"
-  },
-  "author": "Neal Frazier Tech (@1nc0gn30) • NullAI Platform",
-  "license": "MIT",
+  "homepage": "https://osint-domain-scout.netlify.app",
   "repository": {
     "type": "git",
     "url": "https://github.com/NullAITech/osint-scout-skill.git"
-  }
+  },
+  "scripts": {
+    "start": "python3 -m http.server 8085 --directory public",
+    "test:ui": "python3 scripts/verify_ui.py"
+  },
+  "keywords": [
+    "osint",
+    "domain-intelligence",
+    "dns-over-https",
+    "doh",
+    "certificate-transparency",
+    "attack-surface",
+    "reconnaissance",
+    "sovereign-saas"
+  ],
+  "author": "Neal Frazier Tech (@1nc0gn30) • NullAI Platform",
+  "license": "MIT"
 }
