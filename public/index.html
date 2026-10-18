@@ -594,7 +594,7 @@
   <!-- Header -->
   <header>
     <div class="brand" style="display:flex; align-items:center; gap:12px;">
-      <img src="/assets/icon.png" alt="Domain Intel OSINT Scout Icon" width="38" height="38" style="border-radius: 9px; box-shadow: 0 0 12px rgba(212, 175, 55, 0.35);">
+      <img src="assets/icon.png" alt="Domain Intel OSINT Scout Icon" width="38" height="38" style="border-radius: 9px; box-shadow: 0 0 12px rgba(212, 175, 55, 0.35);">
       <div>
         <h1>Domain Intel OSINT Scout</h1>
         <div style="display:flex; align-items:center; gap:6px; margin-top:2px;">
@@ -605,7 +605,7 @@
     </div>
     <div class="header-pills">
       <span class="status-pill" id="licenseBadge" data-alias="pro-badge">⚡ FREE TIER</span>
-      <button class="btn-unlock-link" onclick="openLicenseModal()" aria-label="Manage Pro License">🔑 Unlock Pro</button>
+      <button class="btn-unlock-link" onclick="openLicenseModal()" aria-label="Manage Pro License">✦ Unlock Pro</button>
     </div>
   </header>
 
@@ -740,7 +740,7 @@
 
       <!-- Paywall Lock Card -->
       <div class="paywall-overlay" id="paywall-lock-overlay">
-        <div style="font-size:1.8rem;">🔒</div>
+        <div style="font-size:1.8rem;">★</div>
         <h3>Unlock Executive Threat Dossiers & Continuous Recon</h3>
         <p style="font-size:0.8rem; color:var(--text-muted); max-width:380px;">
           Get lifetime access to multi-domain scanning, automated SPF/DMARC spoofing audits, and zero-egress threat exports.
@@ -785,7 +785,7 @@
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
           <a href="https://buy.stripe.com/4gMfZg9AheOsdhKbcAfw40L" target="_blank" rel="noopener noreferrer" class="btn-buy-stripe">
-            <span>💳 Stripe / Card</span>
+            <span>★ Stripe / Card</span>
           </a>
           <a href="https://depay.com/pay/428790dd-7ad1-407c-8ecf-c048c77a4cb8" target="_blank" rel="noopener noreferrer" onclick="openDePayCheckout(event)" class="btn-buy-solana">
             <span>⚡ Solana DePay</span>
@@ -1048,7 +1048,7 @@
         localStorage.setItem('osint_pro_key', val);
         unlockPro();
         closeLicenseModal();
-        showToast('🎉 Pro License Activated! Lifetime access unlocked.');
+        showToast('★ Pro License Activated! Lifetime access unlocked.');
         return true;
       } else {
         showToast('⚠️ Please enter a valid license key or receipt email.');
@@ -1070,7 +1070,7 @@
           succeeded: () => {
             unlockPro();
             closeLicenseModal();
-            showToast('🎉 Solana Payment Verified! Pro Lifetime Unlocked.');
+            showToast('★ Solana Payment Verified! Pro Lifetime Unlocked.');
           }
         });
       } else {
