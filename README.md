@@ -1,3 +1,9 @@
+<div align="center">
+  <img src="assets/hero-banner.svg" alt="Osint Scout Skill — Sovereign Architecture Banner" width="100%" />
+</div>
+
+<br />
+
 # 🔍 Domain Intel Scout Skill & Web Recon Studio
 
 > **Autonomous Passive Reconnaissance & Attack Surface Discovery Engine for Sovereign AI Agents & Web Operators**  
