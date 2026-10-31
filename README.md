@@ -10,7 +10,9 @@
 > *Structured first-pass domain intelligence using DNS enumeration, WHOIS ownership inspection, and Certificate Transparency logs via crt.sh.*
 
 [![Live App](https://img.shields.io/badge/Live%20App-osint--domain--scout.netlify.app-00ff88?style=flat-square&logo=netlify)](https://osint-domain-scout.netlify.app/)
-[![Founding Pro License](https://img.shields.io/badge/Pro%20Lifetime-$19%20USD%20(Stripe%20%2B%20Solana)-d4af37?style=flat-square)](https://buy.stripe.com/7sI7sA8hM2X8eFG8ww)
+[![Access: 100% Free & Open](https://img.shields.io/badge/Access-100%25%20Free%20%26%20Open-00ff88?style=flat-square)](https://osint-domain-scout.netlify.app/)
+[![Buy Us a Coffee](https://img.shields.io/badge/%E2%98%95_Buy_Us_a_Coffee-Stripe-635bff?style=flat-square)](https://buy.stripe.com/3cIfZg27PdKo2D64Ocfw40X)
+[![Solana Tip](https://img.shields.io/badge/%E2%97%8E_Tip-Solana-14f195?style=flat-square)](solana:GG2eQbVh8ut1BK6j1A2tz7pSySdLpD38BgyEhGcxdXoK)
 [![Skill Status](https://img.shields.io/badge/Agent%20Skill-Domain%20Intel%20Scout-00e5ff?style=flat-square)](#overview)
 [![Ecosystem](https://img.shields.io/badge/Ecosystem-Nous%20Hermes%20%2F%20Codex-gold?style=flat-square)](#compatibility)
 [![Zero Active Scanning](https://img.shields.io/badge/Passive-Zero%20Port%20Scan-brightgreen?style=flat-square)](#safety--ethics)
@@ -87,6 +89,35 @@ git clone https://github.com/NullAITech/osint-scout-skill.git ~/.hermes/skills/d
 * `whois`
 * `curl`
 * `jq`
+
+---
+
+### 4. ZothOS CLI & Python Server Commands
+
+```bash
+# Check daemon status & health
+osint-scout --status
+
+# Passive DNS and attack surface scan on target domain
+osint-scout scan nullai.tech
+
+# Output deterministic JSON telemetry
+osint-scout --json
+
+# Run local daemon on port 8085
+osint-scout serve --port 8085
+```
+
+---
+
+## ☕ 100% Free Open-Access Architecture & Support
+
+Domain Intel OSINT Scout is **100% free, unlocked, and open-access by default**. There are zero paywalls, zero license keys, zero blurred cards, and zero hidden costs.
+
+If you appreciate sovereign local-first security tooling and zero-egress passive reconnaissance, support continued development:
+
+- ☕ **Buy Us a Coffee (Stripe)**: [https://buy.stripe.com/3cIfZg27PdKo2D64Ocfw40X](https://buy.stripe.com/3cIfZg27PdKo2D64Ocfw40X)
+- ◎ **Solana Tip Address**: `GG2eQbVh8ut1BK6j1A2tz7pSySdLpD38BgyEhGcxdXoK`
 
 ---
 
