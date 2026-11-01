@@ -2,7 +2,7 @@
 """
 Domain Intel OSINT Scout - Sovereign Local Server & REST API
 Port: 8085
-Engineered by Neal Frazier Tech (@1nc0gn30) • NullAI Platform
+Engineered by 1nc0gn30 (@1nc0gn30) • NullAI Platform
 """
 
 import sys
