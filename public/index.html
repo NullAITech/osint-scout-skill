@@ -886,23 +886,6 @@
 <p><strong>Posture Score:</strong> ${score}</p>
 <p><strong>DNS Infrastructure & SPF/DMARC:</strong> Verified 100% In-Browser</p>
 <p>Immutable NIST-compliant passive surface report generated locally with zero cloud telemetry.</p>
-  
-
-  <script src="/sovereign_tutorial.js"></script>
-  <script>
-    window.addEventListener("DOMContentLoaded", function() {
-      if (window.createSovereignTutorial) {
-        window.createSovereignTutorial({
-          toolId: "osint-scout-skill",
-          toolName: "Domain Intel OSINT Scout",
-          tagline: "Autonomous domain intelligence, DNS discovery, and WHOIS recon scout!",
-          accentColor: "#EF4444",
-          steps: [{"icon": "\ud83c\udf10", "title": "What is OSINT?", "desc": "Open-Source Intelligence (OSINT) means finding publicly available clues about a website or company on the internet."}, {"icon": "\ud83d\udd0e", "title": "Deep DNS & Certificate Recon", "desc": "Uncovers subdomains, mail servers, IP addresses, and SSL history through transparent public logs."}, {"icon": "\ud83d\udee1\ufe0f", "title": "Security Posture Scorecard", "desc": "Evaluates SPF, DKIM, and DMARC email defenses to check if a domain is vulnerable to spoofing."}]
-        });
-      }
-    });
-  </script>
-
 </body></html>`;
       const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
       const a = document.createElement('a');
