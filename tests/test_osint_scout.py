@@ -82,14 +82,21 @@ def test_open_access_and_coffee_support_invariants():
     assert "FAQPage" in html
 
 
+def _cli_cmd(*args):
+    local_bin = os.path.join(REPO_DIR, "bin", "osint-scout-skill")
+    if os.path.exists(local_bin):
+        return [sys.executable, local_bin, *args]
+    return ["osint-scout-skill", *args]
+
+
 def test_cli_help_and_version():
-    res = subprocess.run(["osint-scout-skill", "--help"], capture_output=True, text=True, check=True)
+    res = subprocess.run(_cli_cmd("--help"), capture_output=True, text=True, check=True)
     assert "Domain Intel OSINT Scout" in res.stdout
     assert "scan" in res.stdout
 
 
 def test_cli_json_telemetry():
-    res = subprocess.run(["osint-scout-skill", "--json"], capture_output=True, text=True, check=True)
+    res = subprocess.run(_cli_cmd("--json"), capture_output=True, text=True, check=True)
     data = json.loads(res.stdout)
     assert data["id"] == "osint-scout-skill"
     assert data["installed"] is True
@@ -97,7 +104,7 @@ def test_cli_json_telemetry():
 
 
 def test_cli_scan_subcommand():
-    res = subprocess.run(["osint-scout-skill", "scan", "localhost"], capture_output=True, text=True, check=True)
+    res = subprocess.run(_cli_cmd("scan", "localhost"), capture_output=True, text=True, check=True)
     data = json.loads(res.stdout)
     assert data["target"] == "localhost"
     assert "records" in data

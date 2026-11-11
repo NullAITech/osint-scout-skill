@@ -39,8 +39,7 @@ class OSINTScoutHandler(SimpleHTTPRequestHandler):
                 "uptime_seconds": round(time.time() - START_TIME, 2),
                 "license": "100% Free & Open Access",
                 "support": {
-                    "stripe_coffee": "https://buy.stripe.com/3cIfZg27PdKo2D64Ocfw40X",
-                    "solana_tip": "GG2eQbVh8ut1BK6j1A2tz7pSySdLpD38BgyEhGcxdXoK"
+                    "stripe_coffee": "https://buy.stripe.com/3cIfZg27PdKo2D64Ocfw40X"
                 }
             }
             self.wfile.write(json.dumps(payload, indent=2).encode('utf-8'))
