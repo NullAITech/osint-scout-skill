@@ -127,6 +127,6 @@ npm test
 
 ## License
 
-Released under the [MIT License](LICENSE). Copyright (c) 2026 [1nc0gn30](https://1nc0gn30.si) (`@1nc0gn30`) & [NullAI](https://nullai.tech).
+Released under the [MIT License](LICENSE). Engineered by **Neal Frazier Tech (`@1nc0gn30`) • [NullAI Platform](https://nullai.tech)**. Copyright (c) 2026 [Neal Frazier](https://nealfrazier.tech).
 
-100% free and open-source with zero paywalls. Optional support: [Buy Us a Coffee (Stripe)](https://buy.stripe.com/3cIfZg27PdKo2D64Ocfw40X).
+100% free and open-access with zero paywalls. Optional support: [Buy Us a Coffee (Stripe)](https://buy.stripe.com/3cIfZg27PdKo2D64Ocfw40X) · Solana Tip: `GG2eQbVh8ut1BK6j1A2tz7pSySdLpD38BgyEhGcxdXoK`.
